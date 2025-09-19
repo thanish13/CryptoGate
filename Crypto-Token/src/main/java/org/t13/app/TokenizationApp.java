@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class TokenApp {
+public class TokenizationApp {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(TokenApp.class);
+        SpringApplication.run(TokenizationApp.class);
 
     }
 }

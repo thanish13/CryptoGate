@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/your_db_name
-    username: your_username
-    password: your_password
+    url: jdbc:postgresql://localhost:5432/CRYPTO_GATE_TOKEN
+    username: CRYPTO_GATE_APP
+    password: cryptogate
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
