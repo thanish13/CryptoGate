@@ -2,6 +2,7 @@ package org.t13.app;
 
 import lombok.extern.slf4j.Slf4j;
 import org.t13.app.runner.AbstractSpringBootRunner;
+import org.t13.app.runner.EncryptionRunner;
 import org.t13.app.runner.TokenizationRunner;
 
 import java.util.ArrayList;
@@ -19,10 +20,7 @@ public class Main {
         // Initialize and add runners for each application
 
         runners.add(new TokenizationRunner());
-
-        // Assuming you have ApplicationB and ApplicationC
-        // ApplicationBRunner appBRunner = new ApplicationBRunner();
-        // runners.add(appBRunner);
+        runners.add(new EncryptionRunner());
 
         // Start all applications
         for (AbstractSpringBootRunner runner : runners) {

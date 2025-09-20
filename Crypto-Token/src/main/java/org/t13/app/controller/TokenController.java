@@ -3,7 +3,8 @@ package org.t13.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.t13.app.model.TokenEntry;
+import org.t13.app.entity.TokenEntry;
+import org.t13.app.model.DataPayload;
 import org.t13.app.service.TokenService;
 
 import java.util.Map;
@@ -16,8 +17,8 @@ public class TokenController {
     private TokenService service;
 
     @PostMapping("/generate")
-    public ResponseEntity<TokenEntry> generate(@RequestBody Map<String, String> payload) {
-        return ResponseEntity.ok(service.tokenize(payload.get("data")));
+    public ResponseEntity<TokenEntry> generate(@RequestBody DataPayload payload) {
+        return ResponseEntity.ok(service.tokenize(payload.getData()));
     }
 
     @GetMapping("/retrieve/{token}")

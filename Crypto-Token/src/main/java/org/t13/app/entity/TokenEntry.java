@@ -1,4 +1,4 @@
-package org.t13.app.model;
+package org.t13.app.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

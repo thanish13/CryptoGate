@@ -2,7 +2,7 @@ package org.t13.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.t13.app.model.TokenEntry;
+import org.t13.app.entity.TokenEntry;
 import org.t13.app.repository.TokenRepository;
 import org.t13.app.util.TokenGenerator;
 
