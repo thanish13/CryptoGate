@@ -7,8 +7,6 @@ import org.t13.app.entity.TokenEntry;
 import org.t13.app.model.DataPayload;
 import org.t13.app.service.TokenService;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api/token")
 public class TokenController {
