@@ -1,6 +1,6 @@
-server:
-  port: 8082
-
 spring:
   config:
     import: "file:config/application.yml"
+
+server:
+  port: 8081
