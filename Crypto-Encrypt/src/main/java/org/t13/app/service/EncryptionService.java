@@ -39,10 +39,9 @@ public class EncryptionService {
         rsaCipher.init(Cipher.ENCRYPT_MODE, rsaKeyPair.getPublic());
         byte[] encryptedKey = rsaCipher.doFinal(aesKey.getEncoded());
 
-        return new EncryptedPayload(
-                Base64.getEncoder().encodeToString(encryptedData),
-                Base64.getEncoder().encodeToString(encryptedKey)
-        );
+        return EncryptedPayload.builder()
+                .encryptedData(Base64.getEncoder().encodeToString(encryptedData))
+                .encryptedKey(Base64.getEncoder().encodeToString(encryptedKey)).build();
     }
 
     public String decrypt(EncryptedPayload payload) throws Exception {
