@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 public class EncryptedPayload {
 
-    private String encryptedData;
-    private String encryptedKey;
+    private String data;
+    private String key;
 
 }

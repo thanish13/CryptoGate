@@ -40,21 +40,21 @@ public class EncryptionService {
         byte[] encryptedKey = rsaCipher.doFinal(aesKey.getEncoded());
 
         return EncryptedPayload.builder()
-                .encryptedData(Base64.getEncoder().encodeToString(encryptedData))
-                .encryptedKey(Base64.getEncoder().encodeToString(encryptedKey)).build();
+                .data(Base64.getEncoder().encodeToString(encryptedData))
+                .key(Base64.getEncoder().encodeToString(encryptedKey)).build();
     }
 
     public String decrypt(EncryptedPayload payload) throws Exception {
         // Decrypt AES key with RSA
         Cipher rsaCipher = Cipher.getInstance("RSA");
         rsaCipher.init(Cipher.DECRYPT_MODE, rsaKeyPair.getPrivate());
-        byte[] aesKeyBytes = rsaCipher.doFinal(Base64.getDecoder().decode(payload.getEncryptedKey()));
+        byte[] aesKeyBytes = rsaCipher.doFinal(Base64.getDecoder().decode(payload.getKey()));
         SecretKey aesKey = new SecretKeySpec(aesKeyBytes, "AES");
 
         // Decrypt data with AES
         Cipher aesCipher = Cipher.getInstance("AES");
         aesCipher.init(Cipher.DECRYPT_MODE, aesKey);
-        byte[] decryptedData = aesCipher.doFinal(Base64.getDecoder().decode(payload.getEncryptedData()));
+        byte[] decryptedData = aesCipher.doFinal(Base64.getDecoder().decode(payload.getData()));
 
         return new String(decryptedData, StandardCharsets.UTF_8);
     }
