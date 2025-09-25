@@ -18,6 +18,7 @@
     <modules>
         <module>Crypto-Token</module>
         <module>Crypto-Encrypt</module>
+        <module>Crypto-Certs</module>
     </modules>
 
     <parent>
