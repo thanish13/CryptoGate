@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class EncryptedPayload {
+public class KeyGenPair {
 
     private String data;
     private String key;
