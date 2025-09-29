@@ -1,8 +1,9 @@
 package org.t13.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.t13.app.model.EncryptedPayload;
 import org.t13.app.service.EncryptionService;
 
 
@@ -13,9 +14,9 @@ public class KeyController {
     @Autowired
     EncryptionService encryptionService;
 
-    @PostMapping("/encrypt")
-    public EncryptedPayload encrypt(@RequestHeader String plainText) throws Exception {
-        return encryptionService.encrypt(plainText);
+    @PostMapping("/create")
+    public ResponseEntity<String> create(@RequestHeader String plainText) {
+        return new ResponseEntity<>(HttpStatusCode.valueOf(200));
 
     };
 

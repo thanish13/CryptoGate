@@ -11,7 +11,9 @@ import lombok.Setter;
 @Setter
 public class KeyGenPair {
 
-    private String data;
-    private String key;
+    private String algorithm;
+    private String keySize;
+    private String publicKey;
+    private String privateKey;
 
 }
