@@ -2,6 +2,7 @@ package org.t13.app.service;
 
 import org.springframework.stereotype.Service;
 import org.t13.app.model.EncryptedPayload;
+import org.t13.app.model.KeyGenPair;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -23,7 +24,7 @@ public class EncryptionService {
         rsaKeyPair = keyGen.generateKeyPair();
     }
 
-    public EncryptedPayload encrypt(String plainText) throws Exception {
+    public KeyGenPair encrypt(String plainText) throws Exception {
         // Generate AES key
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         keyGen.init(128);
@@ -39,9 +40,9 @@ public class EncryptionService {
         rsaCipher.init(Cipher.ENCRYPT_MODE, rsaKeyPair.getPublic());
         byte[] encryptedKey = rsaCipher.doFinal(aesKey.getEncoded());
 
-        return EncryptedPayload.builder()
-                .data(Base64.getEncoder().encodeToString(encryptedData))
-                .key(Base64.getEncoder().encodeToString(encryptedKey)).build();
+        return KeyGenPair.builder()
+                .keySize(Base64.getEncoder().encodeToString(encryptedData))
+                .algorithm(Base64.getEncoder().encodeToString(encryptedKey)).build();
     }
 
     public String decrypt(EncryptedPayload payload) throws Exception {
