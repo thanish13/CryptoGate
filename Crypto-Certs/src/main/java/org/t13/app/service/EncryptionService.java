@@ -1,7 +1,6 @@
 package org.t13.app.service;
 
 import org.springframework.stereotype.Service;
-import org.t13.app.model.EncryptedPayload;
 import org.t13.app.model.KeyGenPair;
 
 import javax.crypto.Cipher;
@@ -24,7 +23,7 @@ public class EncryptionService {
         rsaKeyPair = keyGen.generateKeyPair();
     }
 
-    public KeyGenPair encrypt(String plainText) throws Exception {
+    public KeyGenPair generate(String plainText) throws Exception {
         // Generate AES key
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         keyGen.init(128);
@@ -45,17 +44,17 @@ public class EncryptionService {
                 .algorithm(Base64.getEncoder().encodeToString(encryptedKey)).build();
     }
 
-    public String decrypt(EncryptedPayload payload) throws Exception {
+    public String retrieve(String userId) throws Exception {
         // Decrypt AES key with RSA
         Cipher rsaCipher = Cipher.getInstance("RSA");
         rsaCipher.init(Cipher.DECRYPT_MODE, rsaKeyPair.getPrivate());
-        byte[] aesKeyBytes = rsaCipher.doFinal(Base64.getDecoder().decode(payload.getKey()));
+        byte[] aesKeyBytes = rsaCipher.doFinal(Base64.getDecoder().decode(userId));
         SecretKey aesKey = new SecretKeySpec(aesKeyBytes, "AES");
 
         // Decrypt data with AES
         Cipher aesCipher = Cipher.getInstance("AES");
         aesCipher.init(Cipher.DECRYPT_MODE, aesKey);
-        byte[] decryptedData = aesCipher.doFinal(Base64.getDecoder().decode(payload.getData()));
+        byte[] decryptedData = aesCipher.doFinal(Base64.getDecoder().decode(userId));
 
         return new String(decryptedData, StandardCharsets.UTF_8);
     }
