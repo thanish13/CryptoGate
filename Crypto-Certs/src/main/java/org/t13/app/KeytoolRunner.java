@@ -1,8 +1,11 @@
 package org.t13.app;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+@Slf4j
 public class KeytoolRunner {
 
     public static void main(String[] args) {
@@ -43,7 +46,7 @@ public class KeytoolRunner {
             System.out.println("Keytool process exited with code: " + exitCode);
 
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }
