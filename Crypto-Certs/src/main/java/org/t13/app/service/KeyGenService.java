@@ -13,11 +13,11 @@ import java.security.KeyPairGenerator;
 import java.util.Base64;
 
 @Service
-public class EncryptionService {
+public class KeyGenService {
 
     private final KeyPair rsaKeyPair;
 
-    public EncryptionService() throws Exception {
+    public KeyGenService() throws Exception {
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
         keyGen.initialize(2048);
         rsaKeyPair = keyGen.generateKeyPair();

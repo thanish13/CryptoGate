@@ -2,7 +2,7 @@ package org.t13.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.t13.app.service.EncryptionService;
+import org.t13.app.service.KeyGenService;
 
 
 @RestController
@@ -10,7 +10,7 @@ import org.t13.app.service.EncryptionService;
 public class CertController {
 
     @Autowired
-    EncryptionService encryptionService;
+    KeyGenService keyGenService;
 
     @PostMapping("/encrypt")
     public void encrypt(@RequestHeader String plainText) throws Exception {
