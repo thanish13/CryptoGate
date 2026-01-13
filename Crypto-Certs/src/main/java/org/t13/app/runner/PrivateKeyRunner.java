@@ -1,4 +1,4 @@
-package org.t13.app;
+package org.t13.app.runner;
 
 import lombok.extern.slf4j.Slf4j;
 
