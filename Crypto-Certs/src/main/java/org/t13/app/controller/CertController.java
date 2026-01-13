@@ -2,6 +2,7 @@ package org.t13.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.t13.app.runner.KeytoolRunner;
 import org.t13.app.service.KeyGenService;
 
 
@@ -12,9 +13,9 @@ public class CertController {
     @Autowired
     KeyGenService keyGenService;
 
-    @PostMapping("/encrypt")
-    public void encrypt(@RequestHeader String plainText) throws Exception {
-        return ;
+    @PostMapping("/genkeypair")
+    public void genkeypair(@RequestHeader String plainText) throws Exception {
+         KeytoolRunner.main(new String[]{});
 
     };
 
