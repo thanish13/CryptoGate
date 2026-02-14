@@ -15,14 +15,14 @@ public class KeytoolRunner {
             String[] command = {
                     "keytool",
                     "-genkeypair",
-                    "-alias", "mykey",
+                    "-alias", "myapp",
                     "-keyalg", "RSA",
                     "-keysize", "2048",
+                    "-storetype", "PKCS12",
                     "-dname", "CN=MyName, OU=MyOrgUnit, O=MyOrg, L=MyCity, ST=MyState, C=US",
                     "-validity", "365",
-                    "-keystore", "mykeystore.jks",
-                    "-storepass", "password",
-                    "-keypass", "password"
+                    "-keystore", "keystore.p12",
+                    "-storepass", "changeit"
             };
 
             // Create a ProcessBuilder instance
